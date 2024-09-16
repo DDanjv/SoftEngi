@@ -1,26 +1,27 @@
-package api;
 import java.util.ArrayList;
 import java.util.Scanner;
-public class EnterPrimeNumberFinder {
-	public void prototype(PrimeNumbers number) {
-		Scanner sc=new Scanner(System.in);
-        ArrayList<String> numbers = new ArrayList<String>();
-        System.out.println("enter in mult numbers:");
+
+public class EnterPrimeNumberFinder implements PNF {
+
+public ArrayList<Double> prototype() {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Double> numbers = new ArrayList<Double>();
+        System.out.println("enter in numbers: to end hit enter any letter");
         boolean scan = true;
-        while (scan){
-           String hold = sc.nextLine();
-            if (hold.equals("n")) {
-                System.out.println("Calculating");
-                break;
+        while (scan){ 
+            Double hold = sc.nextDouble();
+            if (sc.hasNextDouble()) {
+                numbers.add(hold);
             }
             else{
-                break;
+                numbers.add(hold);
+                System.out.println("Calculating");
+                scan = false ;
+                sc.close();
+                return numbers;
             }
         }
-        scanner.close();
-		//User would enter number
-		//load prime numbers less then but above 0
-		//list in an array?
-	}
-
+        return numbers;
+    }
 }
+
