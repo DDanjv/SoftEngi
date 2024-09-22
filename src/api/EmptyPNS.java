@@ -5,9 +5,9 @@ import java.util.ArrayList;
 //Empty implementation for PNS
 public class EmptyPNS implements PNS {
  // Instance variables for future API usage
- private ListAPI listApi;
+ private EmptyPNS listApi;
 
- public EmptyPNS(ListAPI listApi) {
+ public EmptyPNS(EmptyPNS listApi) {
      this.listApi = listApi;
  }
 

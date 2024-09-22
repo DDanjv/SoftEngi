@@ -5,9 +5,9 @@ import java.util.ArrayList;
 //Empty implementation for PNF
 public class EmptyPNF implements PNF {
  // Instance variables for future API usage
- private DataStoreAPI dataStoreAPI;
+ private EmptyPNF dataStoreApi;
 
- public EmptyPNF(DataStoreAPI dataStoreApi) {
+ public EmptyPNF(EmptyPNF dataStoreApi) {
      this.dataStoreApi = dataStoreApi;
  }
 

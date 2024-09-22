@@ -1,4 +1,4 @@
-package Assignment_2;
+package api;
 
 import java.util.ArrayList;
 public class PrimeNumberStore implements PNS {
