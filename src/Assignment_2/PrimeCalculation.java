@@ -1,3 +1,5 @@
+package Assignment_2;
+
 import java.util.ArrayList;
 public class PrimeCalculation implements PNC{
 	public ArrayList<Double> prototype (ArrayList<Double> a) {

@@ -1,3 +1,5 @@
+package Assignment_2;
+
 import java.util.ArrayList;
 public class PrimeNumberStore implements PNS {
 	public String prototype(ArrayList<Double> primes) {
