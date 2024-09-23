@@ -1,5 +1,3 @@
-package api2;
-
 import java.util.List;
 
 public class InMemoryInput implements InputConfig {
