@@ -1,8 +1,11 @@
 //stuff from api2
 import api2.ComputationCoordinator;
+import api2.ComputationCoordinatorEmpty;
 import api2.ComputationCoordinatorPrototype;
+import api2.ComputeEngine;
 import api2.ComputeRequest;
 import api2.ComputeResult;
+import api2.DataStore;
 import api2.ComputeResult.ComputeResultStatus;
 import api2.InputConfig;
 import api2.OutputConfig;
@@ -18,11 +21,12 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class ComputationCoordinatorPrototypeSmoke{
 
     // var setup 
-    private ComputationCoordinatorPrototype coordinatorPrototype;
+    private ComputationCoordinatorEmpty coordinatorPrototype;
     private ComputationCoordinator mockedApi;
     private InputConfig mockedInputConfig;
     private OutputConfig mockedOutputConfig;
@@ -30,9 +34,11 @@ public class ComputationCoordinatorPrototypeSmoke{
     private ComputeResult mockedResult;
 
     //Initialization
-    @Before
+    @BeforeEach
     public void setUp() { //create mock of each
-        coordinatorPrototype = new ComputationCoordinatorPrototype();//obj
+        DataStore mockDs = mock(DataStore.class);
+        ComputeEngine mockce = mock(ComputeEngine.class);
+        coordinatorPrototype = new ComputationCoordinatorEmpty(mockDs,mockce);//obj
         mockedApi = mock(ComputationCoordinator.class);
         mockedInputConfig = mock(InputConfig.class);
         mockedOutputConfig = mock(OutputConfig.class);
@@ -48,10 +54,7 @@ public class ComputationCoordinatorPrototypeSmoke{
         when(mockedResult.getStatus()).thenReturn(ComputeResult.SUCCESS.getStatus()); // Assuming ComputeStatus has a constructor that takes a boolean
 
         // Call the method under test
-        coordinatorPrototype.prototype(mockedApi);
-
-        // Verify that the compute method was called with the correct request
-        verify(mockedApi).compute(mockedRequest);
+        mockedResult = coordinatorPrototype.compute(mockedRequest);
 
         // Check the result status
         assertTrue(mockedResult.getStatus().isSuccess());
