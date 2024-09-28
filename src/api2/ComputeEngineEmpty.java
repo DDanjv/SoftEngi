@@ -1,13 +1,12 @@
 package api2;
 
-    
 public class ComputeEngineEmpty implements ComputeEngine {
-    private ComputeEngineEmpty compute;
-    public ComputeEngineEmpty (ComputeEngineEmpty compute){
-        this.compute = compute;
+    private InputConfig input ;
+    public ComputeEngineEmpty (InputConfig input){
+        this.input = input;
     }
     @Override
-    public String compute(int value) {
+    public String compute(int input) {
         throw new UnsupportedOperationException("Unimplemented method 'compute'");
     }
     

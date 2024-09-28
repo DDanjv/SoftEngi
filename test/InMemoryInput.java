@@ -1,4 +1,5 @@
 import java.util.List;
+import api2.InputConfig;
 
 public class InMemoryInput implements InputConfig {
     private final List<Integer> inputData;

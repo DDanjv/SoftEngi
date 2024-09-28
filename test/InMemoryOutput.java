@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import api2.OutputConfig;
 
 public class InMemoryOutput implements OutputConfig {
     private final List<String> outputData;

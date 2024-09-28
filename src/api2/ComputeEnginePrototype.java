@@ -11,3 +11,8 @@ public class ComputeEnginePrototype {
 		String result = engine.compute(1);
 	}
 }
+//Is fine because everything's going to be in the same java process that's an o
+//ption here it's not really an option for the other ones cool and yeah so that
+//s This Is This is one way to do it this is obviously there are many ways to go 
+//about doing this but if you were kind of wondering like hey what what should my 
+//api's look like for looking at this and saying yeah there seems to be an awful lot of

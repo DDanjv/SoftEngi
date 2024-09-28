@@ -1,19 +1,19 @@
 package api2;
 
 public class DataStoreEmpty implements DataStore{
-    private DataStoreEmpty storedata;
-    public DataStoreEmpty (DataStoreEmpty storedtata){
-        this.storedata = storedtata;
+    private InputConfig Received;
+    private OutputConfig send;
+
+    public DataStoreEmpty (InputConfig Received){
+        this.Received = Received;
     }
     @Override
     public Iterable<Integer> read(InputConfig input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'read'");
+        throw new UnsupportedOperationException("cant read");
     }
     @Override
     public WriteResult appendSingleResult(OutputConfig output, String result) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'appendSingleResult'");
+        throw new UnsupportedOperationException("cant append'");
     }
     
 
