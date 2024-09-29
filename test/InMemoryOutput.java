@@ -1,19 +1,27 @@
-import java.util.ArrayList;
 import java.util.List;
-import api2.OutputConfig;
 
-public class InMemoryOutput implements OutputConfig {
-    private final List<String> outputData;
+public class InMemoryDataStore {
 
-    public InMemoryOutput() {
-        this.outputData = new ArrayList<>();
+    private final InMemoryInput inputConfig;
+    private final InMemoryOutput outputConfig;
+
+    public InMemoryDataStore(InMemoryInput inputConfig, InMemoryOutput outputConfig) {
+        this.inputConfig = inputConfig;
+        this.outputConfig = outputConfig;
     }
 
-    public List<String> getOutputData() {
-        return outputData;
+    // Simulates reading input data and writing output data
+    public void process() {
+        List<Integer> inputData = inputConfig.getInputData();
+        for (Integer input : inputData) {
+          // converting integers to strings for output
+            String processedOutput = "Processed: " + input;
+            outputConfig.addOutput(processedOutput);
+        }
     }
 
-    public void addOutput(String result) {
-        outputData.add(result);
+    // For retrieving the output data after processing
+    public List<String> getProcessedOutput() {
+        return outputConfig.getOutputData();
     }
 }
