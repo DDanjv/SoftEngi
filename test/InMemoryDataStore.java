@@ -1,17 +1,27 @@
-package api2.InputConfig;
-package api2.OutputConfig;
+import java.util.List;
 
 public class InMemoryDataStore {
 
-    public WriteResult attachSingleResult(InMemoryOutput output, String result) {
-        output.addOutput(result);
-        return WriteResult.success();
+    private final InMemoryInput inputConfig;
+    private final InMemoryOutput outputConfig;
+
+    public InMemoryDataStore(InMemoryInput inputConfig, InMemoryOutput outputConfig) {
+        this.inputConfig = inputConfig;
+        this.outputConfig = outputConfig;
     }
 
-    public void processData(InMemoryInput input, InMemoryOutput output) {
-        for (Integer data : input.getInputData()) {
-            String result = String.valueOf(data);
-            attachSingleResult(output, result);
+    // Simulates reading input data and writing output data
+    public void process() {
+        List<Integer> inputData = inputConfig.getInputData();
+        for (Integer input : inputData) {
+          // converting integers to strings for output
+            String processedOutput = "Processed: " + input;
+            outputConfig.addOutput(processedOutput);
         }
+    }
+
+    // For retrieving the output data after processing
+    public List<String> getProcessedOutput() {
+        return outputConfig.getOutputData();
     }
 }
