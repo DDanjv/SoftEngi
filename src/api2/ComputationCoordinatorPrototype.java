@@ -6,7 +6,7 @@ public class ComputationCoordinatorPrototype {
 		// a mock object, of make InputConfig a class rather than an interface. All of those accomplish the same goal:
 		// the client is going to get input information from somewhere, it could be a List<Integer>, a single int, a csv file with integers,
 		// a database table with integers, etc - that's going to be an implementation detail
-		InputConfig inputConfig = new InputConfig() { //input
+		input inputConfig = new input(null) { //input
 			
 		};
 		

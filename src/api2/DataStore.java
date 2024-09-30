@@ -18,6 +18,6 @@ package api2;
  * be handled with the return type
  */
 public interface DataStore {
-	Iterable<Integer> read(InputConfig input);
+	Iterable<Integer> read(input input);
 	WriteResult appendSingleResult(OutputConfig output, String result);
 }

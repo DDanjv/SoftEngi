@@ -13,7 +13,7 @@ public class DataStorePrototype {
 		// has a lot of input validation logic might put that in the ComputationCoordinator, and require that the DataStore only get validated input, while
 		// a design that expects to have many possible DataStore implementations that get mix-and-matched with one ComputationCoordinator component might
 		// prefer to force all the input-parsing logic to live in the DataStore
-		InputConfig inputConfig = new InputConfig() {
+		input inputConfig = new input(null) {
 
 		};
 		
