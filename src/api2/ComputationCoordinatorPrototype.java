@@ -11,7 +11,7 @@ public class ComputationCoordinatorPrototype {
 		};
 		
 		// An example of just using null to indicate 'we haven't decided yet, that's for the implementation'
-		OutputConfig outputConfig = null; // output
+		output outputConfig = null; // output
 		
 		// This is also a case where we could make ComputeRequest an interface and just use an anonymous inner class - that lets us punt on
 		// how the default delimiter will be specified. On the other hand, an overloaded constructor isn't that terrible. If you've spotted that this

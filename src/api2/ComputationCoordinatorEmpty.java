@@ -15,7 +15,6 @@ public class ComputationCoordinatorEmpty implements ComputationCoordinator {
             
             OutputConfig compout = api3u.compute(Userinput.getInputList()); 
             //sends to data store
-            DataStore.appendSingleResult(compout,"a"); //need the other two API's in the other two apis to finish
             return null;
     }
 }

@@ -9,6 +9,9 @@ import api2.DataStore;
 import api2.ComputeResult.ComputeResultStatus;
 import api2.InputConfig;
 import api2.OutputConfig;
+import api2.input;
+import api2.output;
+
 //mockito
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,7 +31,7 @@ public class ComputationCoordinatorPrototypeSmoke{
     // var setup 
     private ComputationCoordinatorEmpty coordinatorPrototype;
     private ComputationCoordinator mockedApi;
-    private InputConfig mockedInputConfig;
+    private input mockedInputConfig;
     private OutputConfig mockedOutputConfig;
     private ComputeRequest mockedRequest;
     private ComputeResult mockedResult;
@@ -40,8 +43,8 @@ public class ComputationCoordinatorPrototypeSmoke{
         ComputeEngine mockce = mock(ComputeEngine.class);
         coordinatorPrototype = new ComputationCoordinatorEmpty(mockDs,mockce);//obj
         mockedApi = mock(ComputationCoordinator.class);
-        mockedInputConfig = mock(InputConfig.class);
-        mockedOutputConfig = mock(OutputConfig.class);
+        mockedInputConfig = mock(input.class);
+        mockedOutputConfig = mock(output.class);
         mockedRequest = new ComputeRequest(mockedInputConfig, mockedOutputConfig, ',');
         mockedResult = mock(ComputeResult.class);
     }
