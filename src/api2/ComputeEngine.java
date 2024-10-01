@@ -19,5 +19,5 @@ import java.util.List;
  * from the system specification that it will always be an int, it's fine to just use that as well.
  */
 public interface ComputeEngine {
-	String compute(List<String> value);
+	String compute(List<Integer> value);
 }
