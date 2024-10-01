@@ -25,7 +25,7 @@ public class ComputeRequest {
 		return inputConfig;
 	}
 
-	public OutputConfig getOutputConfig() {
+	public output getOutputConfig() {
 		return outputConfig;
 	}
 

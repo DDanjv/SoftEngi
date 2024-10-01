@@ -5,6 +5,7 @@ import api2.InputConfig;
 import api2.OutputConfig;
 import api2.WriteResult;
 import api2.input;
+import api2.output;
 import api2.WriteResult.WriteResultStatus;
 //mockito
 import static org.mockito.Mockito.mock;
@@ -23,7 +24,7 @@ public class DataStorePrototypeSmoke {
     private DataStorePrototype dataStorePrototype;
     private DataStore mockedApi;
     private input mockedInputConfig;
-    private OutputConfig mockedOutputConfig;
+    private output mockedOutputConfig;
     private WriteResult mockedWriteResult;
 
     // Initialization
@@ -32,7 +33,7 @@ public class DataStorePrototypeSmoke {
         dataStorePrototype = new DataStorePrototype(); // object
         mockedApi = mock(DataStore.class);
         mockedInputConfig = mock(input.class);
-        mockedOutputConfig = mock(OutputConfig.class);
+        mockedOutputConfig = mock(output.class);
         mockedWriteResult = mock(WriteResult.class);
     }
 
