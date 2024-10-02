@@ -4,27 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataStoreEmpty implements DataStore {
-    
-    private List<String> storedResults;  // A list to store results from ComputeEngine
 
-    // accepts Input configuration and initiales result store
-    public DataStoreEmpty(Input receivedInput) {
-        this.receivedInput = receivedInput;
+    private List<Integer> storedInput;   // For storing input integers
+    private List<String> storedResults;  // For storing computation results
+
+    public DataStoreEmpty() {
+        this.storedInput = new ArrayList<>();
         this.storedResults = new ArrayList<>();
     }
 
     @Override
-    public Iterable<Integer> read(Input input) {
-        // This could be expanded, but for now throws an exception
-        throw new UnsupportedOperationException("Cannot read from DataStoreEmpty");
+    public Iterable<Integer> read(InputConfig inputConfig) {
+        return storedInput;
     }
 
     @Override
     public WriteResult appendSingleResult(OutputConfig output, String result) {
-        // Store the result from ComputeEngine
+        // Add the result to the in-memory result list
         storedResults.add(result);
-        // return a successful WriteResult
         return WriteResult.SUCCESS;
     }
 
+    // Method to get stored results for testing
+    public List<String> getStoredResults() {
+        return storedResults;
+    }
 }
