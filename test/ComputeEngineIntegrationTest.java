@@ -32,7 +32,7 @@ public class ComputeEngineIntegrationTest {
         computeE = new ComputeEngineEmpty(inputConfig);
         computationCoordinator = new ComputationCoordinatorEmpty(dataStorea,computeE);//  back to datstore
 
-        dataStore = new InMemoryDataStore();
+        dataStore = new InMemoryDataStore(inputConfig,outputConfig);
 
         inputConfig = new InMemoryInput(Arrays.asList(1, 10, 25));
         outputConfig = new InMemoryOutput();
@@ -41,7 +41,7 @@ public class ComputeEngineIntegrationTest {
     @Test
     public void testComputeEngineIntegration() {
     
-        dataStore.processData(inputConfig, outputConfig);
+        dataStore.process();
 
         String[] expectedResults = {"1", "10", "25"};
         
