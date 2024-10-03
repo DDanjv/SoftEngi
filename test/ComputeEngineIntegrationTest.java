@@ -23,14 +23,13 @@ public class ComputeEngineIntegrationTest {
     private InMemoryInput inputConfig;
     private InMemoryOutput outputConfig;
 
-    private DataStore dataStorea;
 
 
     @BeforeEach
     public void setUp() {
  
-        computeE = new ComputeEngineEmpty(inputConfig);
-        computationCoordinator = new ComputationCoordinatorEmpty(dataStorea,computeE);//  back to datstore
+        //computeE = new ComputeEngineEmpty(inputConfig); TODO
+        computationCoordinator = new ComputationCoordinatorEmpty(dataStore,computeE);//  back to datstore
 
         dataStore = new InMemoryDataStore(inputConfig,outputConfig);
 

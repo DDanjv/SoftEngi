@@ -1,7 +1,10 @@
 package api2;
+
+import java.io.FileNotFoundException;
+
 public class DataStorePrototype {
 
-	public void prototype(DataStore apiToCall) {
+	public void prototype(DataStore apiToCall) throws FileNotFoundException {
 		// For now, use an anonymous inner class - other approaches might be to set this to null, use
 		// a mock object, of make InputConfig a class rather than an interface. All of those accomplish the same goal:
 		// the client is going to get input information from somewhere, it could be a List<Integer>, a single int, a csv file with integers,
@@ -18,7 +21,7 @@ public class DataStorePrototype {
 		};
 		
 		// An example of just using null to indicate 'we haven't decided yet, that's for the implementation'
-		OutputConfig outputConfig = null;
+		output outputConfig = null;
 
 		// Here, we know the type of the data based on the system specification: the user input must be convertable to a stream of
 		// integers. We haven't covered streaming in a lot of detail yet, so if you opted for a more specific type (a single int, an int[], or a 

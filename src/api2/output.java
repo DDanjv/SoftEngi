@@ -1,23 +1,22 @@
 package api2;
-
 import java.util.List;
 
-public class Output implements OutputConfig{
-    private List<String> outputList;
+public class output implements OutputConfig{
+    private List<Integer> outputL;
 
-    public Output(List<String> outputList) {
-        this.outputList = outputList;
+    public output(List<Integer> outputList) {
+        this.outputL = outputList;
     }
 
-    public List<String> getOutputList() {
-        return outputList;
+    public List<Integer> getOutputList() {
+        return outputL;
     }
 
-    public void setOutputList(List<String> outputList) {
-        this.outputList = outputList;
+    public void setOutputList(List<Integer> outputList) {
+        this.outputL = outputList;
     }
 
-    public void addItem(String item) {
-        this.outputList.add(item);
+    public void addItem(Integer  item) {
+        this.outputL.add(item);
     }
 }

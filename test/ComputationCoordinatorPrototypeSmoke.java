@@ -32,7 +32,7 @@ public class ComputationCoordinatorPrototypeSmoke{
     private ComputationCoordinatorEmpty coordinatorPrototype;
     private ComputationCoordinator mockedApi;
     private input mockedInputConfig;
-    private OutputConfig mockedOutputConfig;
+    private output mockedOutputConfig;
     private ComputeRequest mockedRequest;
     private ComputeResult mockedResult;
 
