@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.util.List;
-
-
 public class DataStoreEmpty implements DataStore{
 
     private input Received;
@@ -16,10 +14,11 @@ public class DataStoreEmpty implements DataStore{
     public DataStoreEmpty (input Received){
         this.Received = Received;
     }
+
     @Override
     public Iterable<Integer> read(input input) {
         throw new UnsupportedOperationException("cant read");
-    }
+
     @Override
     public WriteResult appendSingleResult(output output, String result) {
         try (PrintWriter pw = new PrintWriter(myObj)) {
@@ -30,6 +29,5 @@ public class DataStoreEmpty implements DataStore{
         }
         throw new UnsupportedOperationException("cant append'");
     }
-    
 
 }
