@@ -1,4 +1,5 @@
 //stuff from api2
+import java.util.List;
 import api2.ComputeEngine;
 import api2.ComputeEnginePrototype;
 //mockito
@@ -26,16 +27,16 @@ public class ComputeEnginePrototypeSmoke {
     @Test
     public void testPrototype() {
         // Set up the behavior for the mock
-        when(mockedEngine.compute(1)).thenReturn("Result for 1");
+        when(mockedEngine.compute(null)).thenReturn("Result for 1");
         
         // Call the method under test
         computeEnginePrototype.prototype(mockedEngine);
 
         // Verify that the compute method was called with the correct value
-        verify(mockedEngine).compute(1);
+        verify(mockedEngine).compute(null);
 
         // Assert the returned result is correct (if necessary)
-        String result = mockedEngine.compute(1);
+        String result = mockedEngine.compute(null);
         assertEquals("Result for 1", result);
     }
 }

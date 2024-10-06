@@ -1,4 +1,7 @@
 package api2;
+
+import java.io.FileNotFoundException;
+
 /**
  * API 2: Process-level API between the compute engine and the layer that knows how to read/write 
  * user data.
@@ -18,6 +21,6 @@ package api2;
  * be handled with the return type
  */
 public interface DataStore {
-	Iterable<Integer> read(InputConfig input);
-	WriteResult appendSingleResult(OutputConfig output, String result);
+	Iterable<Integer> read(input input);
+	WriteResult appendSingleResult(output output, String result) throws FileNotFoundException;
 }

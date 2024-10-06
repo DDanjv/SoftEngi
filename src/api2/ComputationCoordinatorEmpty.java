@@ -1,4 +1,5 @@
 package api2;
+import java.util.List;
 
 public class ComputationCoordinatorEmpty implements ComputationCoordinator {
 
@@ -10,7 +11,14 @@ public class ComputationCoordinatorEmpty implements ComputationCoordinator {
     }
     @Override
     public ComputeResult compute(ComputeRequest request) {
-        throw new UnsupportedOperationException("Unimplemented method 'compute'");
+            //send to compute engine 
+            try {
+                List<Integer> Userinput = request.getInputConfig().getInputList();
+                String compout = api3u.compute(Userinput); 
+                //sends to data store
+                return ComputeResult.SUCCESS;
+            } catch (Exception e) {
+                return ComputeResult.FAILURE;
+            }
     }
-    
 }

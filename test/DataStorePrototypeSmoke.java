@@ -4,6 +4,8 @@ import api2.DataStorePrototype;
 import api2.InputConfig;
 import api2.OutputConfig;
 import api2.WriteResult;
+import api2.input;
+import api2.output;
 import api2.WriteResult.WriteResultStatus;
 //mockito
 import static org.mockito.Mockito.mock;
@@ -14,6 +16,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 public class DataStorePrototypeSmoke {
@@ -21,8 +24,8 @@ public class DataStorePrototypeSmoke {
     // var setup 
     private DataStorePrototype dataStorePrototype;
     private DataStore mockedApi;
-    private InputConfig mockedInputConfig;
-    private OutputConfig mockedOutputConfig;
+    private input mockedInputConfig;
+    private output mockedOutputConfig;
     private WriteResult mockedWriteResult;
 
     // Initialization
@@ -30,13 +33,13 @@ public class DataStorePrototypeSmoke {
     public void setUp() {
         dataStorePrototype = new DataStorePrototype(); // object
         mockedApi = mock(DataStore.class);
-        mockedInputConfig = mock(InputConfig.class);
-        mockedOutputConfig = mock(OutputConfig.class);
+        mockedInputConfig = mock(input.class);
+        mockedOutputConfig = mock(output.class);
         mockedWriteResult = mock(WriteResult.class);
     }
 
     @Test
-    public void testPrototype() {
+    public void testPrototype() throws FileNotFoundException {
         // Set up the behavior for the mock
         when(mockedApi.read(mockedInputConfig)).thenReturn(Arrays.asList(1, 2, 3)); // Mock reading integers
         when(mockedApi.appendSingleResult(mockedOutputConfig, "1")).thenReturn(mockedWriteResult);
