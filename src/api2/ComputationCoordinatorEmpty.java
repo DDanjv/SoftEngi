@@ -15,16 +15,19 @@ public class ComputationCoordinatorEmpty implements ComputationCoordinator {
     }
     @Override
     public ComputeResult compute(ComputeRequest request) {
+       try{
         if (request == null || request.getInputConfig() == null){
             throw new IllegalArgumentException("ComputeRequest and its InputConfig must not be null.");
         }
             //send to compute engine 
-            try {
                 List<Integer> Userinput = request.getInputConfig().getInputList();
                 String compout = api3u.compute(Userinput); 
-                //sends to data store
                 return ComputeResult.SUCCESS;
+    } catch(IllegalArgumentException e){
+                //sends to data store
+                return ComputeResult.FAILURE;
             } catch (Exception e) {
                 return ComputeResult.FAILURE;
             }
     }
+}
