@@ -23,8 +23,12 @@ public class DataStoreEmpty implements DataStore{
         if (input == null) {
             throw new IllegalArgumentException("Input must not be null.");
         }
-        throw new UnsupportedOperationException("cant read");
-
+        try{
+            throw new UnsupportedOperationException("cant read");
+        } catch (UnsupportedOperationException e) {
+            throw new IllegalStateException("Read Operation not supported", e);
+        }
+    }
     @Override
     public WriteResult appendSingleResult(output output, String result) {
         if (output == null || result == null) {
@@ -38,5 +42,3 @@ public class DataStoreEmpty implements DataStore{
         }
         throw new UnsupportedOperationException("cant append'");
     }
-
-}
