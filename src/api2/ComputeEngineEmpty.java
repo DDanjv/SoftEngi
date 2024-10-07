@@ -17,6 +17,7 @@ public class ComputeEngineEmpty implements ComputeEngine {
         if (input == null){
             throw new IllegalArgumentException("Input list must not be null.");
         }
+        try{
         if (input.isEmpty()){
             return ""; //Nothing more needed if empty
         }
@@ -30,7 +31,10 @@ public class ComputeEngineEmpty implements ComputeEngine {
             }
         }
         return b.toString();
+    }catch (Exception e) {
+        return "Error in Comp";
     }
+}
 }
         //As it stands, this will return ANY number non divisble by 2. 5 and 7 are prime, but 9 and 15 get through and are not.
 	    //I've tried to implement something that may work better if a little late, but what works works.
