@@ -16,8 +16,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ComputeEngineIntegrationTest {
 
-    private ComputeEngineEmpty computeE;
-    private ComputationCoordinatorEmpty computationCoordinator;
+    private ComputeEnginePrototypeSmoke computeE;
+    private ComputationCoordinatorPrototypeSmoke computationCoordinator;
     private InMemoryDataStore dataStore;
 
     private InMemoryInput inputConfig;
@@ -28,10 +28,12 @@ public class ComputeEngineIntegrationTest {
     @BeforeEach
     public void setUp() {
  
-        //computeE = new ComputeEngineEmpty(inputConfig); TODO
-        computationCoordinator = new ComputationCoordinatorEmpty(dataStore,computeE);//  back to datstore
+        computeE = new ComputeEnginePrototypeSmoke(); 
 
         dataStore = new InMemoryDataStore(inputConfig,outputConfig);
+
+        computationCoordinator = new ComputationCoordinatorPrototypeSmoke();//  back to datstore
+
 
         inputConfig = new InMemoryInput(Arrays.asList(1, 10, 25));
         outputConfig = new InMemoryOutput();

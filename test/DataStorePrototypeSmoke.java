@@ -41,7 +41,7 @@ public class DataStorePrototypeSmoke {
     @Test
     public void testPrototype() throws FileNotFoundException {
         // Set up the behavior for the mock
-        when(mockedApi.read(mockedInputConfig)).thenReturn(Arrays.asList(1, 2, 3)); // Mock reading integers
+        when(mockedApi.read(mockedInputConfig)).thenReturn(null); // Mock reading integers //todo
         when(mockedApi.appendSingleResult(mockedOutputConfig, "1")).thenReturn(mockedWriteResult);
         when(mockedApi.appendSingleResult(mockedOutputConfig, "2")).thenReturn(mockedWriteResult);
         when(mockedApi.appendSingleResult(mockedOutputConfig, "3")).thenReturn(mockedWriteResult);

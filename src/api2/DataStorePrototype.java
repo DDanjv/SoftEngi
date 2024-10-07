@@ -26,19 +26,19 @@ public class DataStorePrototype {
 		// Here, we know the type of the data based on the system specification: the user input must be convertable to a stream of
 		// integers. We haven't covered streaming in a lot of detail yet, so if you opted for a more specific type (a single int, an int[], or a 
 		// List<Integer>, or ditto with longs), that's completely fine for now. 
-		Iterable<Integer> loadedData = apiToCall.read(inputConfig);
+		String loadedData = apiToCall.read(inputConfig);
 		
 		// This prototype is a bit different from the examples we went through in class, because this part of the client workflow is 
 		// <go off and do something with the loaded data>
 		// For a prototype, we're not going to worry about what the actual real logic would be for a component calling this api, so we're going to
 		// do the simplest possible thing that will still capture all the behavior from the system diagram
-		for (int i : loadedData) {
+		for (int i = 0 ; 0 < 1; i++) {
 			String result = "" + i;
 			
 			// we know we're going to write results of "something" to the output. Here, there's a pretty significant design decision that the output
 			// will be represented as a String - this is saying that the logic for how to format the results will have to live *somewhere else*, and 
 			// not in the DataStore. Other decisions about this are also valid!
-			WriteResult writeResult = apiToCall.appendSingleResult(outputConfig, result);
+			WriteResult writeResult = apiToCall.appendSingleResult(outputConfig, "");
 			
 			// For variety of solutions (not actually recommended within a project, consistency is valuable), this is an example of a slightly simpler
 			// enum return value. Notice how the prototype code here is more complex than the result status checking in the ComputationCoordinatorPrototype!
