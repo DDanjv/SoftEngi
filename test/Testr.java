@@ -1,6 +1,6 @@
-package api2;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,9 +14,9 @@ import api2.ComputeEngineEmpty;
 import api2.ComputeResult;
 import api2.ComputeRequest;
 
-public class Test {
+public class Testr {
 
-    //@Test todo
+    @Test
     public void testComputeWithEmptyInputList() {
         DataStore data = new DataStoreEmpty(new input(new ArrayList<>())); 
         ComputeEngine engine = new ComputeEngineEmpty(null);
@@ -28,10 +28,5 @@ public class Test {
 
         // Assert
         assertEquals(ComputeResult.FAILURE, result); // Expecting failure when input list is empty
-    }
-
-    private void assertEquals(ComputeResult failure, ComputeResult result) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'assertEquals'");
     }
 }
