@@ -23,6 +23,7 @@ public class TestMultiUser<ComputationCoordinator> {
 	private ComputationCoordinatorEmpty coordinator;
 	
 	@BeforeEach
+	//
 	public void initializeComputeEngine() {
 		//TODO 2: create an instance of your coordinator component; this is the component
 		// that the user will make requests to
