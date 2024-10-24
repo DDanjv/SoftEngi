@@ -21,4 +21,7 @@ public class ComputationCoordinatorEmpty implements ComputationCoordinator {
                 return ComputeResult.FAILURE;
             }
     }
+    public void runComputeJob(String inputPath, String outputPath, char delimiter) {
+        System.out.println("Running compute job with input: " + inputPath + ", output: " + outputPath + ", delimiter: " + delimiter);
+    }
 }
