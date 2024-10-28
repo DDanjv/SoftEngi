@@ -33,7 +33,7 @@ public class TestMultiUser<ComputationCoordinator> {
 		//engine 
 		List<Integer> list = new ArrayList<>();
 		input listl = new input(list);
-		ComputeEngineEmpty engine = new ComputeEngineEmpty(null); //TODO 
+		ComputeEngineEmpty engine = new ComputeEngineEmpty(null);
 		//store
 		DataStoreEmpty store = new DataStoreEmpty(listl);
 		//coord

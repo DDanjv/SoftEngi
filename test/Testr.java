@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import api2.ComputationCoordinatorEmpty;
 import api2.DataStore;
@@ -21,9 +22,7 @@ public class Testr {
         DataStore data = new DataStoreEmpty(new input(new ArrayList<>())); 
         ComputeEngine engine = new ComputeEngineEmpty(null);
         ComputationCoordinatorEmpty core = new ComputationCoordinatorEmpty(data,engine);
-        ComputeRequest user = new ComputeRequest(null, null);
-
-
+        ComputeRequest user = new ComputeRequest(new input(new ArrayList<>(Arrays.asList(1, 2, 3))), null);
         ComputeResult result = core.compute(user);
 
         // Assert
