@@ -11,24 +11,26 @@ public class ComputeEngineEmpty implements ComputeEngine {
     }
     @Override
     public String compute(List<Integer> input) {
-    	 List<Integer> a = new ArrayList<>();
+        List<Integer> a = new ArrayList<>();
 
-    	    for (Integer number : input) {
-    	        if (number > 1) { 
-    	            boolean isPrime = true;
-    	            for (int i = 2; i <= Math.sqrt(number); i++) {
-    	                if (number % i == 0) {
-    	                    isPrime = false;
-    	                    break;
-    	                }
-    	            }
-    	            if (isPrime) {
-    	                a.add(number);
-    	            }
-    	        }
-    	    }
+        // Replacing the for-each loop with a regular for loop
+        for (int i = 0; i < input.size(); i++) {
+            int number = input.get(i);
+            if (number > 1) {
+                boolean isPrime = true;
+                for (int j = 2; j <= Math.sqrt(number); j++) {
+                    if (number % j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    a.add(number);
+                }
+            }
+        }
 
-    	    return a.stream().map(String::valueOf).collect(Collectors.joining(", "));
+        return a.stream().map(String::valueOf).collect(Collectors.joining(", "));
     }
 }
         //As it stands, this will return ANY number non divisble by 2. 5 and 7 are prime, but 9 and 15 get through and are not.
