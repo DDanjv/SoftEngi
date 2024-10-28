@@ -5,7 +5,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import api2.ComputationCoordinatorEmpty;
 import api2.ComputeResult;
 import api2.ComputeRequest;
@@ -30,9 +29,7 @@ public class TestUser {
 		// run the compute job specified by inputPath, outputPath, and delimiter
 
 		List<Integer> inputData = loadInputData(inputPath);
-
 		input inputConfig = new input(inputData);
-		
 		// Create the ComputeRequest with the input
 
 		ComputeRequest computeRequest = new ComputeRequest(inputConfig, null);

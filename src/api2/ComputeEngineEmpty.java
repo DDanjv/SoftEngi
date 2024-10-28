@@ -2,6 +2,7 @@ package api2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ComputeEngineEmpty implements ComputeEngine {
     private input input ;
@@ -10,16 +11,24 @@ public class ComputeEngineEmpty implements ComputeEngine {
     }
     @Override
     public String compute(List<Integer> input) {
-        List<Integer> b = new ArrayList<Integer>();
-        for (int i = 0; i < input.size(); i++) { //
-            for (int j = 0; j < i; j++) {
-                if (input.get(i) % j != 0) {
-                    b.add(input.get(i));
-                }
-                i++;
-            }
-        }
-        return b.toString();
+    	 List<Integer> a = new ArrayList<>();
+
+    	    for (Integer number : input) {
+    	        if (number > 1) { 
+    	            boolean isPrime = true;
+    	            for (int i = 2; i <= Math.sqrt(number); i++) {
+    	                if (number % i == 0) {
+    	                    isPrime = false;
+    	                    break;
+    	                }
+    	            }
+    	            if (isPrime) {
+    	                a.add(number);
+    	            }
+    	        }
+    	    }
+
+    	    return a.stream().map(String::valueOf).collect(Collectors.joining(", "));
     }
 }
         //As it stands, this will return ANY number non divisble by 2. 5 and 7 are prime, but 9 and 15 get through and are not.
