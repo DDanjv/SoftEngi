@@ -1,11 +1,10 @@
-
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import api2.ComputationCoordinatorEmpty;
 import api2.ComputeResult;
@@ -56,7 +55,7 @@ public class TestUser {
 			return Files.lines(Paths.get(inputPath))
 					.map(Integer::parseInt)
 					.collect(Collectors.toList());
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | IOException e) {
 			System.err.println("Error parsing data: " + e.getMessage());
 			return new ArrayList<>();
 		}

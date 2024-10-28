@@ -9,6 +9,7 @@ import java.util.concurrent.Future;
 import api2.ComputationCoordinator;
 import api2.ComputationCoordinatorEmpty;
 import api2.ComputeEngineEmpty;
+import api2.ComputeRequest;
 import api2.DataStoreEmpty;
 import api2.input;
 
@@ -18,24 +19,26 @@ import org.junit.jupiter.api.Test;
 
 public class TestMultiUser<ComputationCoordinator> {
 	
-	// TODO 1: change the type of this variable to the name you're using for your
+	// change the type of this variable to the name you're using for your
 	// User <-> ComputeEngine API
 	private ComputationCoordinatorEmpty coordinator;
 	
 	@BeforeEach
 	//
 	public void initializeComputeEngine() {
-		//TODO 2: create an instance of your coordinator component; this is the component
+		//create an instance of your coordinator component; this is the component
 		// that the user will make requests to
 		// Store it in the 'coordinator' instance variable
 
 		//engine 
 		List<Integer> list = new ArrayList<>();
 		input listl = new input(list);
-		ComputeEngineEmpty engine = new ComputeEngineEmpty(listl);
+		ComputeEngineEmpty engine = new ComputeEngineEmpty(null); //TODO 
 		//store
 		DataStoreEmpty store = new DataStoreEmpty(listl);
+		//coord
 		coordinator = new ComputationCoordinatorEmpty(store, engine);
+		coordinator.compute(new ComputeRequest(listl, null));
 	}
 
 	@Test
