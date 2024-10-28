@@ -41,7 +41,7 @@ public class DataStoreEmpty implements DataStore{
     @Override
     public WriteResult appendSingleResult(output output, String result) {
         try (PrintWriter objw = new PrintWriter(new FileWriter(myObj, true))) {
-            objw.println(result);
+            objw.println(result +"results");
             return new WriteResultImpl(WriteResultStatus.SUCCESS);
         } catch (FileNotFoundException e) {
             return new WriteResultImpl(WriteResultStatus.FAILURE);
