@@ -14,10 +14,12 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mock;
 
 public class ComputationCoordinatorPrototypeSmoke{
 
     // var setup 
+    @Mock
     private ComputationCoordinatorEmpty coordinatorPrototype;
     private ComputationCoordinator mockedApi;
     private input mockedInputConfig;
