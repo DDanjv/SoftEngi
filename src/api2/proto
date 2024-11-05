@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package api2;
+
+service ComputationService{
+    rpc Compute (ComputeRequest) returns (ComputeResponse);
+    rpc ReadData (ReadRequest) returns (ReadResponse);
+    rpc AppendResult (AppendRequest) returns (AppendResponse);
+}
+
+message ComputeRequest {
+    repeated int 32 input = 1;
+}
+
+message ComputeResponse {
+    string result 1;
+}
+
+message ReadRequest{}
+
+message ReadResponse {
+    string data = 1;
+}
+
+message AppendRequest {
+    string result = 1;
+}
+
+message AppendResponse {
+    bool success = 1;
+}
