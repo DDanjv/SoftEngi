@@ -1,5 +1,3 @@
-syntax = "proto3";
-
 package api2;
 
 service ComputationService{
