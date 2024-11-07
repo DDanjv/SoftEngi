@@ -13,7 +13,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 //junit
 import static org.junit.Assert.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 public class ComputationCoordinatorPrototypeSmoke{
@@ -28,7 +28,7 @@ public class ComputationCoordinatorPrototypeSmoke{
 
     private input mockedInputConfig;
     private output mockedOutputConfig;
-    
+
     private ComputeRequest mockedRequest;
     private ComputeResult mockedResult;
 
