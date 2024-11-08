@@ -2,27 +2,25 @@
 
 import java.util.concurrent.TimeUnit;
 
+import api2.ComputationServiceGrpc;
+import api2.ComputationServiceGrpc.ComputationServiceBlockingStub;
 import io.grpc.Channel;
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
-import phoneorder.PhoneOrder.PhoneOrderRequest;
-import phoneorder.PhoneOrder.PhoneOrderResponse;
-import phoneorder.PhoneOrderServiceGrpc;
-import phoneorder.PhoneOrderServiceGrpc.PhoneOrderServiceBlockingStub;
  
 //call the coordite 
 public class ComputecordClient { // Boilerplate TODO: change to <servicename>Client //
-    private final PhoneOrderServiceBlockingStub blockingStub; // Boilerplate TODO: update to appropriate blocking stub
+    private final ComputationServiceBlockingStub blockingStub; // Boilerplate TODO: update to appropriate blocking stub
 
     public ComputecordClient(Channel channel) {
-        blockingStub = PhoneOrderServiceGrpc.newBlockingStub(channel);  // Boilerplate TODO: update to appropriate blocking stub
+        blockingStub = ComputationServiceGrpc.newBlockingStub(channel);  // Boilerplate TODO: update to appropriate blocking stub
     }
 
     // Boilerplate TODO: replace this method with actual client call/response logic
     public void order() {        
-        PhoneOrderRequest request = PhoneOrderRequest.newBuilder().setModel("android").setIncludeWarranty(true).build();
+        ComputationServiceRequest request = PhoneOrderRequest.newBuilder().setModel("android").setIncludeWarranty(true).build();
         PhoneOrderResponse response;
         try {
             response = blockingStub.createPhoneOrder(request);

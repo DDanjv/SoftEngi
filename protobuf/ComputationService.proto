@@ -8,10 +8,13 @@ service ComputationService{
 
 message ComputeRequest {
     optional input obj = 1;
-    optional output obj = 1;
+    optional output obj2 = 2;
 }
 message input{
     repeated int32 list = 1; 
+}
+message output{
+    optional string out = 1; 
 }
 
 message ComputeResponse {
