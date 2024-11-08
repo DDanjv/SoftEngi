@@ -15,11 +15,15 @@ public class GrpcComputationService extends ComputationServiceGrpc.ComutationSer
 
     @Override
     public void compute(ComputeRequest request, StreamObserver<ComputeResponse> responseObserver) {
-        ComputeResult result = coordinator.compute(new api2.ComputeRequest(request.getInputList()));
-        String output = result.getOutput();
-        ComputeResponse response = ComputeResponse.newBuilder().setResult(output).build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
+        try {
+            ComputeResult result = coordinator.compute(new api2.ComputeRequest(request.getInputList()));
+            String output = result.getOutput();
+            ComputeResponse response = ComputeResponse.newBuilder().setResult(output).build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
+        }
     }
 
     @Override
