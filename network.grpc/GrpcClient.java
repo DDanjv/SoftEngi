@@ -53,7 +53,7 @@ public class GrpcClient {
         System.out.print("Enter a delimiter for the output file (optional, default is comma): ");
         String delimiter = scanner.nextLine().isEmpty() ? "," : scanner.nextLine();
 
-        String target = "localhost:50051";
+        String target = "localhost:50051"; //Will have to set up more properly on my end to make sure localhost works, but could just be error on my end
         ManagedChannel channel = ManagedChannelBuilder.forTarget(target).usePlaintext().build();
 
         try {
