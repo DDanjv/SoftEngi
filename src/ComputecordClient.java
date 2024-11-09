@@ -4,6 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import api2.ComputationServiceGrpc;
 import api2.ComputationServiceGrpc.ComputationServiceBlockingStub;
+import api2.ComputationServiceOuterClass;
+import api2.ComputationServiceOuterClass.ComputeRequest;
+import api2.ComputationServiceOuterClass.ComputeResponse;
 import io.grpc.Channel;
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
@@ -20,10 +23,10 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
 
     // Boilerplate TODO: replace this method with actual client call/response logic
     public void order() {        
-        ComputationServiceRequest request = PhoneOrderRequest.newBuilder().setModel("android").setIncludeWarranty(true).build();
-        PhoneOrderResponse response;
+        ComputeRequest request = ComputeRequest.newBuilder().setIncludeWarranty(true).build();
+        ComputeResponse response;
         try {
-            response = blockingStub.createPhoneOrder(request);
+            response = blockingStub.ComputeRequest(request);
         } catch (StatusRuntimeException e) {
             e.printStackTrace();
             return;
@@ -31,7 +34,7 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
         if (response.hasErrorMessage()) {
             System.err.println("Error: " + response.getErrorMessage());
         } else {
-            System.out.println("Order number: " + response.getOrderNumber());
+            System.out.println("Response: " + response);
         }
     }
 
@@ -41,7 +44,7 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
         ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
                 .build();
         try {
-            PhoneOrderClient client = new PhoneOrderClient(channel); // Boilerplate TODO: update to this class name
+            ComputecordClient client = new ComputecordClient(channel); // Boilerplate TODO: update to this class name
             client.order();
         } finally {
             channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
