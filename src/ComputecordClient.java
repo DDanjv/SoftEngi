@@ -1,7 +1,4 @@
-
-
 import java.util.concurrent.TimeUnit;
-
 import api2.ComputationServiceGrpc;
 import api2.ComputationServiceGrpc.ComputationServiceBlockingStub;
 import api2.ComputationServiceOuterClass;
@@ -23,10 +20,10 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
 
     // Boilerplate TODO: replace this method with actual client call/response logic
     public void order() {        
-        ComputeRequest request = ComputeRequest.newBuilder().setIncludeWarranty(true).build();
+        ComputeRequest request = ComputeRequest.newBuilder().build();
         ComputeResponse response;
         try {
-            response = blockingStub.ComputeRequest(request);
+            response = blockingStub.compute(request);
         } catch (StatusRuntimeException e) {
             e.printStackTrace();
             return;

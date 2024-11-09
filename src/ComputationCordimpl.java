@@ -1,21 +1,55 @@
-import api2.ComputationCoordinatorEmpty;
-import api2.ComputationServiceGrpc.ComputationServiceImplBase;
-import api2.ComputeEngine;
-import api2.DataStore;
-import api2.ComputeRequest;
-public class ComputationCordimpl extends ComputationServiceImplBase{
+import io.grpc.stub.StreamObserver;
 
-    private DataStore Datastore; // for api 2
-    private ComputeEngine engine; // for api 3 
+import java.util.List;
 
-    public ComputationCordimpl(DataStore Datastore, ComputeEngine engine){
-        this.Datastore = Datastore;
-        this.engine = engine;
+import api2.ComputationServiceGrpc;
+import api2.ComputationServiceOuterClass;
+import api2.ComputationServiceOuterClass.input;
+
+public class ComputationCordimpl extends ComputationServiceGrpc.ComputationServiceImplBase {
+
+    @Override
+    public void compute(ComputationServiceOuterClass.ComputeRequest request,
+                        StreamObserver<ComputationServiceOuterClass.ComputeResponse> responseObserver) {
+        
+         input inputList = request.getObj();
+         List<Integer> a = inputList.getListList();
+        int result = 0;
+        for (int i = 0; i < a.size(); i++) {
+            result += inputList.getList(i);
+        }
+
+        ComputationServiceOuterClass.ComputeResponse response = ComputationServiceOuterClass.ComputeResponse
+                .newBuilder()
+                .setResult(""+result)
+                .build();
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
-    public void compute(api2.ComputationServiceOuterClass.ComputeRequest request,
-        io.grpc.stub.StreamObserver<api2.ComputationServiceOuterClass.ComputeResponse> responseObserver) {
-            ComputationCoordinatorEmpty a = new ComputationCoordinatorEmpty(Datastore, engine);
-            ComputeRequest b = new ComputeRequest(null, null);
-            a.compute(request.getObj());
+
+    @Override
+    public void readData(ComputationServiceOuterClass.ReadRequest request,
+                         StreamObserver<ComputationServiceOuterClass.ReadResponse> responseObserver) {
+        
+        ComputationServiceOuterClass.ReadResponse response = ComputationServiceOuterClass.ReadResponse
+                .newBuilder()
+                .setData("Sample data")
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void appendResult(ComputationServiceOuterClass.AppendRequest request,
+                             StreamObserver<ComputationServiceOuterClass.AppendResponse> responseObserver) {
+        
+        ComputationServiceOuterClass.AppendResponse response = ComputationServiceOuterClass.AppendResponse
+                .newBuilder()
+                .setSuccess(true)
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
 }

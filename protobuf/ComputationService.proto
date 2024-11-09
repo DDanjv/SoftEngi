@@ -39,3 +39,8 @@ message AppendRequest {
 message AppendResponse {
     optional bool success = 1;
 }
+
+enum ComputeResult {
+    SUCCESS = 0;
+    FAILURE = 1;
+}
