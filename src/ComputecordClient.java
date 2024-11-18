@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import api2.ComputationServiceGrpc;
 import api2.ComputationServiceGrpc.ComputationServiceBlockingStub;
@@ -9,6 +13,8 @@ import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
+import java.util.ArrayList;
+import java.util.List;
  
 //call the coordite 
 public class ComputecordClient { // Boilerplate TODO: change to <servicename>Client //
@@ -19,11 +25,11 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
     }
 
     // Boilerplate TODO: replace this method with actual client call/response logic
-    public void order() {        
+    public void order(List<Integer> a, String b) {
         ComputeRequest request = ComputeRequest.newBuilder().build();
         ComputeResponse response;
         try {
-            response = blockingStub.compute(request);
+            response = blockingStub.compute(request); //sever call 
         } catch (StatusRuntimeException e) {
             e.printStackTrace();
             return;
@@ -40,11 +46,36 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
 
         ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
                 .build();
-        try {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("give input file pls: ");
+        String fileName = scanner.nextLine();
+        System.out.println("give input file pls: ");
+        String outputname = scanner.nextLine();
+        // src\\f.test to call file
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            System.out.println("taking ");
+            String line ; 
+            List<Integer> nums = new ArrayList<Integer>();
+            while ((line = reader.readLine()) != null) {
+                nums.add(Integer.parseInt(line.trim()));
+                System.out.println(nums);
+            }
             ComputecordClient client = new ComputecordClient(channel); // Boilerplate TODO: update to this class name
-            client.order();
+            client.order(nums, outputname);
+
+
+        }catch (IOException e) {
+
+            System.err.println("Error: An I/O error occurred while accessing the file. Details: " + e.getMessage());
+
+        } catch (RuntimeException e) {
+
+            System.err.println("Error: A runtime error occurred. Details: " + e.getMessage());
+
         } finally {
+
             channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
+            scanner.close();
         }
     }
 }

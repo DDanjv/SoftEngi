@@ -7,7 +7,7 @@ import api2.ComputationServiceOuterClass;
 import api2.ComputationServiceOuterClass.input;
 
 public class ComputationCordimpl extends ComputationServiceGrpc.ComputationServiceImplBase {
-
+    // call coordaites
     @Override
     public void compute(ComputationServiceOuterClass.ComputeRequest request,
                         StreamObserver<ComputationServiceOuterClass.ComputeResponse> responseObserver) {
