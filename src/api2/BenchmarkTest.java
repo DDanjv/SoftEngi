@@ -1,12 +1,12 @@
-package tuning;
-
+package api2;
 import static org.junit.jupiter.api.Assertions.fail;
-
 import java.util.concurrent.TimeUnit;
-
 import org.junit.jupiter.api.Test;
-
 import com.google.common.base.Stopwatch;
+import api2.ComputeEngineEmpty;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class BenchmarkTest {
 	
@@ -14,27 +14,27 @@ public class BenchmarkTest {
 
 	@Test
 	public void testBenchmark() throws Exception {
-		TaskInterface v1 = new SlowVersion();
-		TaskInterface v2 = new FasterVersion();
+		//Shared input list
+		List<Integer> input = Array.asList(1, 2, 3, 4, 5, 1009, 1013, 1021, 100000);
 		
-		long elapsedTimeV1 = timeAVersion(v1);
-		long elapsedTimeV2 = timeAVersion(v2);
+		ComputeEngineEmpty computeEngine = new ComputeEngineEmpty();
+		long elapsedTimeNaive = timeComputeVersion(() -> computeEngine.computeNaive(input));
+		long elapsedTimeSieve = timeComputeVersion(() -> computeEngine.compute(inpute));
 		
-		double percentImprovement = elapsedTimeV1 * .2;
+		double percentImprovement = elapsedTimeNaive * 0.2;
 		
-		System.out.println("Old: " + elapsedTimeV1);
-		System.out.println("New: " + elapsedTimeV2);
+		System.out.println("Old: " + elapsedTimeNaive);
+		System.out.println("New: " + elapsedTimeSieve);
 		
-		if (Math.abs(elapsedTimeV1 - elapsedTimeV2) < percentImprovement
-				|| elapsedTimeV2 > elapsedTimeV1) {
-			fail();
+		if (elapsedTimeSieve >= elapsedTimeNaive - percentImprovement){
+			fail("THe version did not improve");
 		}
 	}
 
-	private long timeAVersion(TaskInterface v1) {
+	private long timeComputeVersion(Runnable task) {
 		Stopwatch timer = Stopwatch.createStarted();
 		for (int i = 0; i < NUM_RUNS; i++) {
-			v1.doTask();
+			task.run();
 		}
 		timer.stop();
 		
