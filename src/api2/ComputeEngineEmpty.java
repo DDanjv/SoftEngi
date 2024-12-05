@@ -3,14 +3,17 @@ package api2;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class ComputeEngineEmpty implements ComputeEngine {
     private boolean[] primeSieve;
 
     // Constructor to initialize the sieve
     public ComputeEngineEmpty() {
+        // Fast Version
         int maxNumber = 10_000; // Can adjust this limit
         this.primeSieve = generatePrimeSieve(maxNumber);
+
     }
 
     // Method to generate a sieve of primes up to a given max
@@ -51,6 +54,35 @@ public class ComputeEngineEmpty implements ComputeEngine {
         return primes.stream()
                      .map(String::valueOf)
                      .collect(Collectors.joining(", "));
+    }
+
+    //Slow code v
+    @Override
+    public String computeNaive(List<Integer> input) {
+        if(input == null || input.isEmpty()){
+            System.err.println("Input list is null or empty.");
+            return "";
+        }
+
+        List<Integer> primes = new ArrayList<>();
+
+        // Replacing the for-each loop with a regular for loop
+        for (int number : input) {
+            if (number > 1) {
+                boolean isPrime = true;
+                for (int j = 2; j <= Math.sqrt(number); j++) {
+                    if (number % j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    primes.add(number);
+                }
+            }
+        }
+
+        return primes.stream().map(String::valueOf).collect(Collectors.joining(", "));
     }
 }
 
