@@ -1,5 +1,5 @@
 package api2;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.Assert.fail;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
 import com.google.common.base.Stopwatch;
@@ -11,23 +11,24 @@ import java.util.List;
 public class BenchmarkTest {
 	
 	private static final int NUM_RUNS = 10;
+	private static final double IMPROVEMENT_PERCENT = 0.2;
 
 	@Test
 	public void testBenchmark() throws Exception {
 		//Shared input list
-		List<Integer> input = Array.asList(1, 2, 3, 4, 5, 1009, 1013, 1021, 100000);
+		List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 1009, 1013, 1021, 100000);
 		
 		ComputeEngineEmpty computeEngine = new ComputeEngineEmpty();
 		long elapsedTimeNaive = timeComputeVersion(() -> computeEngine.computeNaive(input));
-		long elapsedTimeSieve = timeComputeVersion(() -> computeEngine.compute(inpute));
+		long elapsedTimeSieve = timeComputeVersion(() -> computeEngine.compute(input));
 		
-		double percentImprovement = elapsedTimeNaive * 0.2;
+		double threshold = elapsedTimeNaive * (1 - IMPROVEMENT_PERCENT);
 		
-		System.out.println("Old: " + elapsedTimeNaive);
-		System.out.println("New: " + elapsedTimeSieve);
+		System.out.println("Old: " + elapsedTimeNaive + "ms");
+		System.out.println("New: " + elapsedTimeSieve + "ms");
 		
-		if (elapsedTimeSieve >= elapsedTimeNaive - percentImprovement){
-			fail("THe version did not improve");
+		if (elapsedTimeSieve >= threshold){
+			fail("The version did not improve");
 		}
 	}
 
