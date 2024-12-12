@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 public class DataStorePrototype {
 
+	@SuppressWarnings("unused")
 	public void prototype(DataStore apiToCall) throws FileNotFoundException {
 		// For now, use an anonymous inner class - other approaches might be to set this to null, use
 		// a mock object, of make InputConfig a class rather than an interface. All of those accomplish the same goal:

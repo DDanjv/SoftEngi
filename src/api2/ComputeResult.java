@@ -1,7 +1,4 @@
 package api2;
-
-import api2.ComputeResult.ComputeResultStatus;
-
 public interface ComputeResult {
 	static ComputeResult SUCCESS = () -> ComputeResultStatus.SUCCESS;
 	static ComputeResult FAILURE = () -> ComputeResultStatus.FAILURE;

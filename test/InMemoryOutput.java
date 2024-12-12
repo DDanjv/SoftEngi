@@ -1,19 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import api2.OutputConfig;
+import api2.output;
 
-public class InMemoryOutput implements OutputConfig {
-    private final List<String> outputData;
+public class InMemoryOutput extends output {
 
-    public InMemoryOutput() {
-        this.outputData = new ArrayList<>();
+    public InMemoryOutput(String outputList) {
+        super(outputList);
     }
 
-    public List<String> getOutputData() {
-        return outputData;
+    @Override
+    public String getOutput() {
+        return super.getOutput();
     }
 
-    public void addOutput(String result) {
-        outputData.add(result);
+    @Override
+    public void setOutput(String outputList) {
+        super.setOutput(outputList);
     }
 }
+

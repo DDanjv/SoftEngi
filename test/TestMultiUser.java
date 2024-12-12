@@ -18,7 +18,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestMultiUser<ComputationCoordinator> {
+public class TestMultiUser<T> {
 	
 	// change the type of this variable to the name you're using for your
 	// User <-> ComputeEngine API

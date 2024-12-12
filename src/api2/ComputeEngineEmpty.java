@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ComputeEngineEmpty implements ComputeEngine {
+    @SuppressWarnings("unused")
     private input input ;
     public ComputeEngineEmpty (input input){
         this.input = input;

@@ -1,23 +1,19 @@
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-import api2.ComputeEngine;
-import api2.DataStore;
-import api2.input;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 import io.grpc.protobuf.services.ProtoReflectionService;
 
-public class ComputationCordServer { // Boilerplate TODO: Change name of class
+public class ComputationCordServer { 
       private Server server;
 
       private void start() throws IOException {
         /* The port on which the server should run */
-        int port = 50051; // Boilerplate TODO: Consider changing the port (only one server per port)
+        int port = 50051; 
         
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
-            .addService(new ComputationCordimpl()) // Boilerplate TODO: Change name of class
+            .addService(new ComputationCordimpl()) 
             .addService(ProtoReflectionService.newInstance())
             .build()
             .start();
@@ -49,7 +45,7 @@ public class ComputationCordServer { // Boilerplate TODO: Change name of class
       }
 
       public static void main(String[] args) throws Exception {
-        ComputationCordServer server = new ComputationCordServer(); // Boilerplate TODO: Change name of class
+        ComputationCordServer server = new ComputationCordServer();
           server.start();
           server.blockUntilShutdown();
       }

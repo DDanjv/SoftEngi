@@ -9,9 +9,8 @@ import api2.ComputeResult;
 import api2.DataStore;
 import api2.DataStoreEmpty;
 import api2.input;
-
 public class Test {
-	public static void main(String[] args) { 
+	public static void main(String[] args) {
     DataStore data = new DataStoreEmpty(new input(new ArrayList<>())); 
         ComputeEngine engine = new ComputeEngineEmpty(null);
         ComputationCoordinatorEmpty core = new ComputationCoordinatorEmpty(data,engine);

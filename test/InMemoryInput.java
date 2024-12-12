@@ -1,14 +1,24 @@
 import java.util.List;
-import api2.InputConfig;
+import api2.input;
 
-public class InMemoryInput implements InputConfig {
-    private final List<Integer> inputData;
+public class InMemoryInput extends input {
 
-    public InMemoryInput(List<Integer> inputData) {
-        this.inputData = inputData;
+    public InMemoryInput(List<Integer> inputList) {
+        super(inputList);
     }
 
-    public List<Integer> getInputData() {
-        return inputData;
+    @Override
+    public List<Integer> getInputList() {
+        return super.getInputList();
+    }
+
+    @Override
+    public void setInputList(List<Integer> inputList) {
+        super.setInputList(inputList);
+    }
+
+    @Override
+    public void addItem(Integer item) {
+        super.addItem(item);
     }
 }

@@ -1,9 +1,8 @@
 package api2;
 
-import java.util.List;
-
 public class ComputeEnginePrototype {
 	
+	@SuppressWarnings("unused")
 	public void prototype(ComputeEngine engine) {
 		// This prototype ends up being the simplest, even though the implementation of it is likely to be the most complex of the components.
 		// We know the input here is going to be an int, so the parameters are nice and simple, and I've chosen to represent the output as a String -

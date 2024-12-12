@@ -1,5 +1,4 @@
 package api2;
-import java.util.List;
 
 public class output implements OutputConfig{
     private String outputL;

@@ -1,64 +1,44 @@
-//stuff from api2
-import api2.DataStore;
-import api2.DataStorePrototype;
-import api2.InputConfig;
-import api2.OutputConfig;
+
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import api2.DataStoreEmpty;
 import api2.WriteResult;
 import api2.input;
 import api2.output;
-import api2.WriteResult.WriteResultStatus;
-//mockito
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-//junit
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.io.FileNotFoundException;
-import java.util.Arrays;
+import java.io.*;
+class DataStorePrototypeSmoke {
+    @Mock
+    private input mockInput;
 
-public class DataStorePrototypeSmoke {
+    @Mock
+    private output mockOutput;
 
-    // var setup 
-    private DataStorePrototype dataStorePrototype;
-    private DataStore mockedApi;
-    private input mockedInputConfig;
-    private output mockedOutputConfig;
-    private WriteResult mockedWriteResult;
+    private DataStoreEmpty dataStore;
 
-    // Initialization
-    @Before
-    public void setUp() {
-        dataStorePrototype = new DataStorePrototype(); // object
-        mockedApi = mock(DataStore.class);
-        mockedInputConfig = mock(input.class);
-        mockedOutputConfig = mock(output.class);
-        mockedWriteResult = mock(WriteResult.class);
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        dataStore = new DataStoreEmpty(mockInput);
     }
-
     @Test
-    public void testPrototype() throws FileNotFoundException {
-        // Set up the behavior for the mock
-        when(mockedApi.read(mockedInputConfig)).thenReturn(null); // Mock reading integers //todo
-        when(mockedApi.appendSingleResult(mockedOutputConfig, "1")).thenReturn(mockedWriteResult);
-        when(mockedApi.appendSingleResult(mockedOutputConfig, "2")).thenReturn(mockedWriteResult);
-        when(mockedApi.appendSingleResult(mockedOutputConfig, "3")).thenReturn(mockedWriteResult);
-        when(mockedWriteResult.getStatus()).thenReturn(WriteResultStatus.SUCCESS);
-
-        // Call the method under test
-        dataStorePrototype.prototype(mockedApi);
-
-        // Verify that the read method was called with the correct inputConfig
-        verify(mockedApi).read(mockedInputConfig);
-
-        // Verify that appendSingleResult was called with the correct results for each integer
-        verify(mockedApi).appendSingleResult(mockedOutputConfig, "1");
-        verify(mockedApi).appendSingleResult(mockedOutputConfig, "2");
-        verify(mockedApi).appendSingleResult(mockedOutputConfig, "3");
-
-        // Check the write result status
-        assertEquals(WriteResultStatus.SUCCESS, mockedWriteResult.getStatus());
+    WriteResult testAppendSingleResult_Success() throws IOException {
+        File tempFile = new File("Datastore_Success.txt");
+        when(mockOutput.getOutput()).thenReturn(tempFile.getAbsolutePath());
+        String resultData = "TestResult";
+        WriteResult result = dataStore.appendSingleResult(mockOutput, resultData);
+        try (BufferedReader reader = new BufferedReader(new FileReader(tempFile))) {
+            String line = reader.readLine();
+            assertNotNull(line);
+            assertTrue(line.contains("TestResultresults"));
+        }
+        assertEquals(WriteResult.WriteResultStatus.SUCCESS, result.getStatus());
+        return result;
     }
 }

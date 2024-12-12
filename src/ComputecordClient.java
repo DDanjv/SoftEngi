@@ -5,7 +5,6 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import api2.ComputationServiceGrpc;
 import api2.ComputationServiceGrpc.ComputationServiceBlockingStub;
-import api2.ComputationServiceOuterClass;
 import api2.ComputationServiceOuterClass.ComputeRequest;
 import api2.ComputationServiceOuterClass.ComputeResponse;
 import api2.ComputationServiceOuterClass.input;
@@ -19,14 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
  
 //call the coordite 
-public class ComputecordClient { // Boilerplate TODO: change to <servicename>Client //
-    private final ComputationServiceBlockingStub blockingStub; // Boilerplate TODO: update to appropriate blocking stub
+public class ComputecordClient { 
+    private final ComputationServiceBlockingStub blockingStub; 
 
     public ComputecordClient(Channel channel) {
-        blockingStub = ComputationServiceGrpc.newBlockingStub(channel);  // Boilerplate TODO: update to appropriate blocking stub
+        blockingStub = ComputationServiceGrpc.newBlockingStub(channel); 
     }
 
-    // Boilerplate TODO: replace this method with actual client call/response logic
     public void order(List<Integer> a, String b) {
         input in  = input.newBuilder().addAllList(a).build();
         output out = output.newBuilder().setOut(b).build();
@@ -49,7 +47,7 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
     }
 
     public static void main(String[] args) throws Exception {
-        String target = "localhost:50051";  // Boilerplate TODO: make sure the server/port match the server/port you want to connect to
+        String target = "localhost:50051"; 
 
         ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
                 .build();
@@ -66,7 +64,7 @@ public class ComputecordClient { // Boilerplate TODO: change to <servicename>Cli
                 nums.add(Integer.parseInt(line.trim()));
             }
             System.out.println(nums);
-            ComputecordClient client = new ComputecordClient(channel); // Boilerplate TODO: update to this class name
+            ComputecordClient client = new ComputecordClient(channel);
             client.order(nums, outputname);
 
 

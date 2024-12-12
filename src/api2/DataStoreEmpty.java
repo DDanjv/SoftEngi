@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
-import java.util.List;
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -13,7 +11,9 @@ import java.io.FileReader;
 import api2.WriteResult.WriteResultStatus;
 public class DataStoreEmpty implements DataStore{
 
+    @SuppressWarnings("unused")
     private input Received;
+    @SuppressWarnings("unused")
     private output send;
     private File myObj;
 

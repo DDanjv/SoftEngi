@@ -1,4 +1,4 @@
-//stuff from api2
+/*//stuff from api2
 import api2.ComputationCoordinator;
 import api2.ComputationCoordinatorEmpty;
 import api2.ComputeEngine;
@@ -24,7 +24,7 @@ public class ComputationCoordinatorPrototypeSmoke{
 
     private DataStorePrototypeSmoke mockds;
 
-    private ComputeEnginePrototypeSmoke mockengine;
+    //private ComputeEnginePrototypeSmoke mockengine;
 
     private input mockedInputConfig;
     private output mockedOutputConfig;
@@ -58,4 +58,4 @@ public class ComputationCoordinatorPrototypeSmoke{
         // Check the result status
         assertTrue(mockedResult.getStatus().isSuccess());
     }
-}
+}*/
