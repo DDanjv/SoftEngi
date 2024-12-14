@@ -1,6 +1,6 @@
-import api2.output;
+import api2.Output;
 
-public class InMemoryOutput extends output {
+public class InMemoryOutput extends Output {
 
     public InMemoryOutput(String outputList) {
         super(outputList);

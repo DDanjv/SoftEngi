@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import api2.ComputationCoordinatorEmpty;
 import api2.ComputeResult;
 import api2.ComputeRequest;
-import api2.input;
-import api2.output;
+import api2.Input;
+import api2.Output;
 
 
 public class TestUser {
@@ -26,10 +26,10 @@ public class TestUser {
 		
 
 		List<Integer> inputData = loadInputData(inputPath);
-		input inputConfig = new input(inputData);
+		Input inputConfig = new Input(inputData);
 		// Create the ComputeRequest with the input
 
-		ComputeRequest computeRequest = new ComputeRequest(inputConfig, new output(outputPath));
+		ComputeRequest computeRequest = new ComputeRequest(inputConfig, new Output(outputPath));
 
 		// Call the compute method
 		ComputeResult result = coordinator.compute(computeRequest);

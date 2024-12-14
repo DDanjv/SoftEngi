@@ -1,9 +1,9 @@
 package api2;
 
-public class output implements OutputConfig{
+public class Output implements OutputConfig{
     private String outputL;
 
-    public output(String outputList) {
+    public Output(String outputList) {
         this.outputL = outputList;
     }
 

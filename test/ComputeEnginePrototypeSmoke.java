@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import api2.ComputeEngineEmpty;
-import api2.input;
+import api2.Input;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 class ComputeEnginePrototypeSmoke {
 
     @Mock
-    private input mockInput;
+    private Input mockInput;
 
     private ComputeEngineEmpty computeEngine;
 

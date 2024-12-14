@@ -12,7 +12,7 @@ import api2.ComputationCoordinatorEmpty;
 import api2.ComputeEngineEmpty;
 import api2.ComputeRequest;
 import api2.DataStoreEmpty;
-import api2.input;
+import api2.Input;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +34,7 @@ public class TestMultiUser<T> {
 		//engine 
 		List<Integer> list = new ArrayList<>();
 		
-		input listl = new input(list);
+		Input listl = new Input(list);
 		ComputeEngineEmpty engine = new ComputeEngineEmpty(null);
 		//store
 		DataStoreEmpty store = new DataStoreEmpty(listl);

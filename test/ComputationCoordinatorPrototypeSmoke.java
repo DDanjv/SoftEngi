@@ -18,8 +18,8 @@ import api2.ComputeResult;
 import api2.DataStore;
 import api2.InputConfig;
 import api2.OutputConfig;
-import api2.input;
-import api2.output;
+import api2.Input;
+import api2.Output;
 
 public class ComputationCoordinatorPrototypeSmoke{
     
@@ -38,8 +38,8 @@ public class ComputationCoordinatorPrototypeSmoke{
     @Test
     boolean runcompute() throws FileNotFoundException{
         ComputeRequest mockRequest = mock(ComputeRequest.class);
-        input mockInputConfig = mock(input.class);
-        output mockOutputConfig = mock(output.class);
+        Input mockInputConfig = mock(Input.class);
+        Output mockOutputConfig = mock(Output.class);
 
         List<Integer> inputList = Arrays.asList(1, 2, 3, 4);
         when(mockRequest.getInputConfig()).thenReturn(mockInputConfig);

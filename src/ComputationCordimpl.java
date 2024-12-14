@@ -17,8 +17,8 @@ public class ComputationCordimpl extends ComputationServiceGrpc.ComputationServi
     public void compute(ComputationServiceOuterClass.ComputeRequest requestg, StreamObserver<ComputationServiceOuterClass.ComputeResponse> out) {
     Builder result;
     try {
-         api2.input actinput = new api2.input(requestg.getObj().getListList());
-         api2.output actoutput = new api2.output(requestg.getObj2().getOut());
+         api2.Input actinput = new api2.Input(requestg.getObj().getListList());
+         api2.Output actoutput = new api2.Output(requestg.getObj2().getOut());
          ComputeRequest hold = new ComputeRequest(actinput,actoutput);
          cord.compute(hold);
         result = api2.ComputationServiceOuterClass.ComputeResponse.newBuilder().setResult("true");

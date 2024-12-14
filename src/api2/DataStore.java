@@ -21,6 +21,6 @@ import java.io.FileNotFoundException;
  * be handled with the return type
  */
 public interface DataStore {
-	String read(input input);
-	WriteResult appendSingleResult(output output, String result) throws FileNotFoundException;
+	String read(Input input);
+	WriteResult appendSingleResult(Output output, String result) throws FileNotFoundException;
 }

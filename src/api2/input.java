@@ -1,10 +1,10 @@
 package api2;
 import java.util.List;
 
-public class input implements InputConfig {
+public class Input implements InputConfig {
     private List<Integer> inputList;
     
-    public input(List<Integer> inputList) {
+    public Input(List<Integer> inputList) {
         this.inputList = inputList;
     }
 

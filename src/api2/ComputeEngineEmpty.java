@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class ComputeEngineEmpty implements ComputeEngine {
     @SuppressWarnings("unused")
-    private input input ;
-    public ComputeEngineEmpty (input input){
+    private Input input ;
+    public ComputeEngineEmpty (Input input){
         this.input = input;
     }
     @Override

@@ -1,7 +1,7 @@
 import java.util.List;
-import api2.input;
+import api2.Input;
 
-public class InMemoryInput extends input {
+public class InMemoryInput extends Input {
 
     public InMemoryInput(List<Integer> inputList) {
         super(inputList);

@@ -17,12 +17,12 @@ public class DataStorePrototype {
 		// has a lot of input validation logic might put that in the ComputationCoordinator, and require that the DataStore only get validated input, while
 		// a design that expects to have many possible DataStore implementations that get mix-and-matched with one ComputationCoordinator component might
 		// prefer to force all the input-parsing logic to live in the DataStore
-		input inputConfig = new input(null) {
+		Input inputConfig = new Input(null) {
 
 		};
 		
 		// An example of just using null to indicate 'we haven't decided yet, that's for the implementation'
-		output outputConfig = null;
+		Output outputConfig = null;
 
 		// Here, we know the type of the data based on the system specification: the user input must be convertable to a stream of
 		// integers. We haven't covered streaming in a lot of detail yet, so if you opted for a more specific type (a single int, an int[], or a 

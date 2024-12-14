@@ -9,16 +9,16 @@ import org.mockito.MockitoAnnotations;
 
 import api2.DataStoreEmpty;
 import api2.WriteResult;
-import api2.input;
-import api2.output;
+import api2.Input;
+import api2.Output;
 
 import java.io.*;
 class DataStorePrototypeSmoke {
     @Mock
-    private input mockInput;
+    private Input mockInput;
 
     @Mock
-    private output mockOutput;
+    private Output mockOutput;
 
     private DataStoreEmpty dataStore;
 

@@ -12,17 +12,17 @@ import api2.WriteResult.WriteResultStatus;
 public class DataStoreEmpty implements DataStore{
 
     @SuppressWarnings("unused")
-    private input Received;
+    private Input Received;
     @SuppressWarnings("unused")
-    private output send;
+    private Output send;
     private File myObj;
 
-    public DataStoreEmpty (input Received){
+    public DataStoreEmpty (Input Received){
         this.Received = Received;
     }
 
     @Override
-    public String read(input input) {
+    public String read(Input input) {
         StringBuilder objb = new StringBuilder();
 
         try (BufferedReader fileobj = new BufferedReader(new FileReader(myObj))) {
@@ -39,7 +39,7 @@ public class DataStoreEmpty implements DataStore{
         return objb.toString();
     }
     @Override
-    public WriteResult appendSingleResult(output output, String result) {
+    public WriteResult appendSingleResult(Output output, String result) {
         myObj = new File(output.getOutput());
         try (PrintWriter objw = new PrintWriter(new FileWriter(myObj, true))) {
             objw.println(result +"results");
