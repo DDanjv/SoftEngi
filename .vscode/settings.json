@@ -2,5 +2,6 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "github-actions.workflows.pinned.workflows": [
         ".github/workflows/Gradle.yml"
-    ]
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }
