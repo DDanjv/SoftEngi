@@ -2,7 +2,15 @@ package network.grpc;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import api2.*;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
+import api2.ComputationCoordinator;
+import api2.ComputationCoordinatorEmpty;
+import api2.DataStore;
+import api2.DataStoreEmpty;
+import api2.ComputeEngineEmpty;
+import api2.Input;
+
 
 public class GrpcServer {
 

@@ -2,14 +2,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
-import api2.ComputationCoordinatorEmpty;
-import api2.DataStore;
-import api2.ComputeEngine;
-import api2.DataStoreEmpty;
-import api2.Input;
-import api2.ComputeEngineEmpty;
-import api2.ComputeResult;
-import api2.ComputeRequest;
+import api.ComputationCoordinatorEmpty;
+import api.DataStore;
+import api.ComputeEngine;
+import api.DataStoreEmpty;
+import api.Input;
+import api.ComputeEngineEmpty;
+import api.ComputeResult;
+import api.ComputeRequest;
 
 
 public class Testr {
@@ -24,7 +24,7 @@ public class Testr {
 
         // Assert
         assertNotNull(result); // assert that the result is not null
-		assertEquals("api2.ComputeResult$$Lamb", result.toString().substring(0,24));
+		assertEquals("api.ComputeResult$$Lambd", result.toString().substring(0,24));
 		// Expecting failure when input list is empty
     }
 }

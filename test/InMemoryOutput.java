@@ -1,4 +1,4 @@
-import api2.Output;
+import api.Output;
 
 public class InMemoryOutput extends Output {
 

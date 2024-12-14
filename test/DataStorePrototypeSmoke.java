@@ -1,18 +1,20 @@
-
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import api.DataStoreEmpty;
+import api.WriteResult;
+import api.Input;
+import api.Output;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
-import api2.DataStoreEmpty;
-import api2.WriteResult;
-import api2.Input;
-import api2.Output;
-
-import java.io.*;
 class DataStorePrototypeSmoke {
     @Mock
     private Input mockInput;

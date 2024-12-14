@@ -1,7 +1,4 @@
-import api2.DataStoreEmpty;
-import api2.WriteResult;
-import api2.Input;
-import api2.Output;
+import api.WriteResult;
 
 public class testingsmokes {
     public static void main(String[] args) throws Exception {

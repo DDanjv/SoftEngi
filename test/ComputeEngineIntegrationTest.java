@@ -1,16 +1,13 @@
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-
-import api2.ComputationCoordinator;
-import api2.ComputationCoordinatorEmpty;
-import api2.ComputeEngine;
-import api2.ComputeEngineEmpty;
-import api2.DataStore;
-import api2.OutputConfig;
-
+import api.ComputationCoordinator;
+import api.ComputationCoordinatorEmpty;
+import api.ComputeEngine;
+import api.ComputeEngineEmpty;
+import api.DataStore;
+import api.OutputConfig;
 import java.util.Arrays;
-
 import static org.junit.Assert.assertEquals;
 
 public class ComputeEngineIntegrationTest {

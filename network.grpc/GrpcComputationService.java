@@ -1,6 +1,12 @@
 package network.grpc;
 
-import api2.*;
+import api2.ComputationCoordinator;
+import api2.ComputeRequest;
+import api2.ComputeResult;
+import api2.DataStore;
+import api2.WriteResult;
+import api2.WriteResult.WriteResultStatus;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class GrpcComputationService extends ComputationServiceGrpc.ComutationServiceImplBase {

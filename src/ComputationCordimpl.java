@@ -1,12 +1,12 @@
 import io.grpc.stub.StreamObserver;
-import api2.ComputationCoordinatorEmpty;
-import api2.ComputationServiceGrpc;
-import api2.ComputationServiceOuterClass;
-import api2.ComputeEngineEmpty;
-import api2.ComputeRequest;
-import api2.DataStoreEmpty;
-import api2.ComputationServiceOuterClass.ComputeResponse;
-import api2.ComputationServiceOuterClass.ComputeResponse.Builder;
+import api.ComputationCoordinatorEmpty;
+import api.ComputationServiceGrpc;
+import api.ComputationServiceOuterClass;
+import api.ComputeEngineEmpty;
+import api.ComputeRequest;
+import api.DataStoreEmpty;
+import api.ComputationServiceOuterClass.ComputeResponse;
+import api.ComputationServiceOuterClass.ComputeResponse.Builder;
 
 public class ComputationCordimpl extends ComputationServiceGrpc.ComputationServiceImplBase {
     // call coordaites
@@ -17,11 +17,11 @@ public class ComputationCordimpl extends ComputationServiceGrpc.ComputationServi
     public void compute(ComputationServiceOuterClass.ComputeRequest requestg, StreamObserver<ComputationServiceOuterClass.ComputeResponse> out) {
     Builder result;
     try {
-         api2.Input actinput = new api2.Input(requestg.getObj().getListList());
-         api2.Output actoutput = new api2.Output(requestg.getObj2().getOut());
+         api.Input actinput = new api.Input(requestg.getObj().getListList());
+         api.Output actoutput = new api.Output(requestg.getObj2().getOut());
          ComputeRequest hold = new ComputeRequest(actinput,actoutput);
          cord.compute(hold);
-        result = api2.ComputationServiceOuterClass.ComputeResponse.newBuilder().setResult("true");
+        result = api.ComputationServiceOuterClass.ComputeResponse.newBuilder().setResult("true");
         System.out.println("done with computation");
     } catch (Exception e) {
         e.printStackTrace();

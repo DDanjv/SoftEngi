@@ -1,5 +1,5 @@
 syntax = "proto3";
-package api2;
+package api;
 option java_outer_classname = "ComputationServiceOuterClass";
 
 service ComputationService{

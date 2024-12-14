@@ -1,5 +1,5 @@
 import java.util.List;
-import api2.Input;
+import api.Input;
 
 public class InMemoryInput extends Input {
 

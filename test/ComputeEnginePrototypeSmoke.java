@@ -1,12 +1,10 @@
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import api2.ComputeEngineEmpty;
-import api2.Input;
-
+import api.ComputeEngineEmpty;
+import api.Input;
 import java.util.Arrays;
 import java.util.List;
 
