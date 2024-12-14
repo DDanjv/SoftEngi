@@ -1,6 +1,6 @@
 import api.WriteResult;
 
-public class testingsmokes {
+public class Testingsmokes {
     public static void main(String[] args) throws Exception {
         DataStorePrototypeSmoke tester = new DataStorePrototypeSmoke();
         ComputeEnginePrototypeSmoke testcomp = new ComputeEnginePrototypeSmoke();
