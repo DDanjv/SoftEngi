@@ -25,6 +25,9 @@ message ComputeResponse {
     optional string error_message = 2;
 
 }
+
+message ReadRequest{}
+
 message ReadResponse {
     optional string data = 1;
 }
