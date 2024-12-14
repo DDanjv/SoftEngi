@@ -16,6 +16,7 @@ public class Test {
         ComputationCoordinatorEmpty core = new ComputationCoordinatorEmpty(data,engine);
         ComputeRequest user = new ComputeRequest(new Input(new ArrayList<>(Arrays.asList(1, 2, 3))), null);
         System.out.println("e");
+        @SuppressWarnings("unused")
         ComputeResult res = core.compute(user);
 
   }

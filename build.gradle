@@ -12,9 +12,7 @@ sourceSets {
 	    srcDirs = ['protobuf']
 	  }
 	  java {
-		srcDirs = ['src',
-					'build/generated/source/proto/main/grpc',
-					'build/generated/source/proto/main/java']
+		srcDirs = ['src', 'build/generated/source/proto/main/grpc', 'build/generated/source/proto/main/java'] 
 	  }
 	}
 	test {
@@ -46,10 +44,11 @@ dependencies {
 
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
     testImplementation "io.grpc:grpc-inprocess:${grpcVersion}"
-    
+
+    testImplementation('junit:junit:4.12')
     testImplementation('org.junit.jupiter:junit-jupiter:5.10.2')
-    testImplementation('org.mockito:mockito-core:5.10.0')
-    testImplementation('org.mockito:mockito-junit-jupiter:5.10.0')
+	testImplementation('org.mockito:mockito-core:5.10.0')
+    //testImplementation('org.mockito:mockito-junit-jupiter:5.10.0')
 }
 
 protobuf {
@@ -60,4 +59,6 @@ protobuf {
     generateProtoTasks {
         all()*.plugins { grpc {} }
     }
+    
 }
+
