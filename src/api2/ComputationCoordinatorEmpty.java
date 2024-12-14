@@ -13,8 +13,8 @@ public class ComputationCoordinatorEmpty implements ComputationCoordinator {
     private ComputeEngine engine; // for api 3 
     private static final int numofthreads = 4;
 
-    public ComputationCoordinatorEmpty(DataStore Datastore, ComputeEngine engine){
-        this.Datastore = Datastore;
+    public ComputationCoordinatorEmpty(DataStore dataStore, ComputeEngine engine){
+        this.Datastore = dataStore;
         this.engine = engine;
     }
     @Override
@@ -23,8 +23,8 @@ public class ComputationCoordinatorEmpty implements ComputationCoordinator {
             ExecutorService threadpool = Executors.newFixedThreadPool(numofthreads);
             //send to compute engine 
             try {
-            	List<Integer> Userinput = request.getInputConfig().getInputList();
-                if (Userinput == null) {
+            	List<Integer> userInput = request.getInputConfig().getInputList();
+                if (userInput == null) {
                     System.err.println("User input list is null.");
                     return ComputeResult.FAILURE;
                 }
@@ -32,7 +32,7 @@ public class ComputationCoordinatorEmpty implements ComputationCoordinator {
                 	System.out.print("Received:");
                 }
                 Callable<ComputeResult> taskforthread = () -> {
-                    String compout = engine.compute(Userinput);
+                    String compout = engine.compute(userInput);
                     if (compout == null) {
                         System.err.println("ComputeEngine returned null.");
                         return ComputeResult.FAILURE;

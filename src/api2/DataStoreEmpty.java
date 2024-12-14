@@ -17,8 +17,8 @@ public class DataStoreEmpty implements DataStore{
     private Output send;
     private File myObj;
 
-    public DataStoreEmpty (Input Received){
-        this.Received = Received;
+    public DataStoreEmpty (Input received){
+        this.Received = received;
     }
 
     @Override
