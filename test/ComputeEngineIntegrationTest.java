@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
+import org.mockito.MockitoAnnotations;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import api.ComputationCoordinator;
@@ -11,35 +12,54 @@ import api.ComputeResult;
 import api.DataStore;
 import api.OutputConfig;
 import java.util.Arrays;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.nullable;
+import api.*;
+import org.junit.Test;
+import java.util.Arrays;
+import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class ComputeEngineIntegrationTest {
 
-    private ComputeEngineEmpty compute;
-    private ComputationCoordinatorEmpty computationCoordinator;
-    private InMemoryDataStore dataStore;
-
-    private InMemoryInput inputConfig;
-    private InMemoryOutput outputConfig;
-
-    @BeforeEach
-    public void setUp() {
-
-        inputConfig = new InMemoryInput(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,25));
-        outputConfig = new InMemoryOutput("");
-        compute = new ComputeEngineEmpty(inputConfig);
-        dataStore = new InMemoryDataStore(inputConfig, outputConfig);
-        computationCoordinator = new ComputationCoordinatorEmpty((DataStore) dataStore, compute);
-    }
-
     @Test
-    public void testComputeEngineIntegration() {
-        /*// Simulate computation
-        ComputeRequest request = new ComputeRequest(inputConfig, outputConfig);
-        ComputeResult result = computationCoordinator.compute(request);
-
-        String actResults = dataStore.read();
-        System.out.println(actResults);
-        String[] expectedResults = {"1", "10", "25"};*/
+    public void testDataStore() {
+        List<Integer> inputList = Arrays.asList(2, 10, 25);
+        InMemoryInput input = new InMemoryInput(inputList);
+        InMemoryOutput output = new InMemoryOutput("output1");
+        DataStore dataStore = new InMemoryDataStore(input); 
+        ComputeEngine engine = new ComputeEngineEmpty(null);
+        ComputationCoordinator coordinator = new ComputationCoordinatorEmpty(dataStore, engine);
+        ComputeRequest request = new ComputeRequest(input, output);
+        ComputeResult result = coordinator.compute(request);
+        System.out.println(dataStore.read(input));
+        assertEquals(ComputeResult.SUCCESS, result);
+        assertEquals("2results" + System.lineSeparator(), dataStore.read(input));
+    }
+    @Test
+    public void testDataStoreRight() {
+        List<Integer> inputList = Arrays.asList( 2, 3, 7);
+        InMemoryInput input = new InMemoryInput(inputList);
+        InMemoryOutput output = new InMemoryOutput("output1");
+        DataStore dataStore = new InMemoryDataStore(input); 
+        ComputeEngine engine = new ComputeEngineEmpty(null);
+        ComputationCoordinator coordinator = new ComputationCoordinatorEmpty(dataStore, engine);
+        ComputeRequest request = new ComputeRequest(input, output);
+        ComputeResult result = coordinator.compute(request);
+        System.out.println(dataStore.read(input));
+        assertEquals(ComputeResult.SUCCESS, result);
+        assertEquals("2, 3, 7results" + System.lineSeparator(), dataStore.read(input));
+    }
+     @Test
+    public void testInputConfigNull() {
+        InMemoryInput input = new InMemoryInput(null);
+        InMemoryOutput output = new InMemoryOutput("output1");
+         DataStore dataStore = new InMemoryDataStore(input); // Use TestDataStore
+        ComputeEngine engine = new ComputeEngineEmpty(null); // Create ComputeEngineEmpty with no input
+        ComputationCoordinator coordinator = new ComputationCoordinatorEmpty(dataStore, engine);
+        ComputeRequest request = new ComputeRequest(input,output);
+        ComputeResult result = coordinator.compute(request);
+        assertEquals(ComputeResult.FAILURE, result);
     }
 }
