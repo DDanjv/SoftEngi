@@ -43,4 +43,18 @@ class DataStorePrototypeSmoke {
         assertEquals(WriteResult.WriteResultStatus.SUCCESS, result.getStatus());
         return result;
     }
+
+    @Test
+   void testAppendSingleResult_NullCheck() {
+        assertNotNull(dataStore, "DataStore should not be null");
+        File tempFile = new File("Datastore_NullCheck.txt");
+        when(mockOutput.getOutput()).thenReturn(tempFile.getAbsolutePath());
+        String resultData = "TestResult";
+        WriteResult result = null;
+        if(dataStore != null) {
+            result = dataStore.appendSingleResult(mockOutput, resultData);
+        }
+        assertNotNull(result, "WriteResult should not be null if dataStore is initialized");
+        System.out.println("Ran");
+   }
 }
