@@ -22,10 +22,9 @@ class ComputeEnginePrototypeSmoke {
     }
 
     @Test
-    boolean testCompute_WithPrimes(){
+    void testCompute_WithPrimes(){
         List<Integer> inputNumbers = Arrays.asList(2, 3, 4, 5, 6, 7, 8, 9, 10);
         String result = computeEngine.compute(inputNumbers);
         assertEquals("2, 3, 5, 7", result);
-        return true;
     }
 }
