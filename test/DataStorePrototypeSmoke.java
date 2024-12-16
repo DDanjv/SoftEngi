@@ -54,6 +54,6 @@ class DataStorePrototypeSmoke {
         if(dataStore != null) {
             result = dataStore.appendSingleResult(mockOutput, resultData);
         }
-        assertNotNull(result, "WriteResult should not be null if dataStore is initialized");
+        assertNotNull(result, "WriteResult should not be null if dataStore is initialized.");
    }
 }
