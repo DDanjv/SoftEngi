@@ -55,6 +55,5 @@ class DataStorePrototypeSmoke {
             result = dataStore.appendSingleResult(mockOutput, resultData);
         }
         assertNotNull(result, "WriteResult should not be null if dataStore is initialized");
-        System.out.println("Ran");
    }
 }
