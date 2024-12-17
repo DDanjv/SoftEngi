@@ -29,6 +29,7 @@ class DataStorePrototypeSmoke {
         MockitoAnnotations.openMocks(this);
         dataStore = new DataStoreEmpty(mockInput);
     }
+    
     @Test
     WriteResult testAppendSingleResult_Success() throws IOException {
         File tempFile = new File("Datastore_Success.txt");
@@ -45,7 +46,7 @@ class DataStorePrototypeSmoke {
     }
 
     @Test
-   void testAppendSingleResult_NullCheck() {
+    WriteResult testAppendSingleResult_NullCheck() {
         assertNotNull(dataStore, "DataStore should not be null");
         File tempFile = new File("Datastore_NullCheck.txt");
         when(mockOutput.getOutput()).thenReturn(tempFile.getAbsolutePath());
@@ -55,5 +56,7 @@ class DataStorePrototypeSmoke {
             result = dataStore.appendSingleResult(mockOutput, resultData);
         }
         assertNotNull(result, "WriteResult should not be null if dataStore is initialized.");
+        assertEquals(WriteResult.WriteResultStatus.SUCCESS, result.getStatus());
+        return result;
    }
 }
