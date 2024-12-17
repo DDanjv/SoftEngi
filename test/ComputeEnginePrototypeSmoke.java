@@ -45,38 +45,34 @@ public class ComputeEnginePrototypeSmoke {
        this.computeEngine = new ComputeEngineEmpty(mockInput);
     }
     @Test
-    String testCompute_noPrime() {
+    void testCompute_noPrime() {
         when(mockInput.getInputList()).thenReturn(Arrays.asList(1, 4, 6, 8, 9, 10));
         String result = computeEngine.compute(mockInput.getInputList());
         assertEquals("", result);
-        return result;
     }
 
 
     @Test
-    String testCompute_multiplePrime() {
+    void testCompute_multiplePrime() {
         when(mockInput.getInputList()).thenReturn(Arrays.asList(2, 3, 4, 5, 6, 7, 10, 11, 13));
         String result = computeEngine.compute(mockInput.getInputList());
         assertEquals("2, 3, 5, 7, 11, 13", result);
-        return result;
     }
 
 
    @Test
-    String testCompute_Zero() {
+   void testCompute_Zero() {
         when(mockInput.getInputList()).thenReturn(Arrays.asList(0,2));
         String result = computeEngine.compute(mockInput.getInputList());
         assertEquals("2", result);
-        return result;
     }
 
 
      @Test
-    String testCompute_Null() {
+     void testCompute_Null() {
         when(mockInput.getInputList()).thenReturn(Arrays.asList());
         String result = computeEngine.compute(mockInput.getInputList());
         assertEquals("", result);
-        return result;
     }
    
 }

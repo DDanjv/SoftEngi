@@ -34,7 +34,7 @@ public class ComputationCoordinatorPrototypeSmoke{
         cord = new ComputationCoordinatorEmpty(data,comp);
     }
     @Test
-    boolean runcompute() throws FileNotFoundException{
+    void runcompute() throws FileNotFoundException{
         ComputeRequest mockRequest = mock(ComputeRequest.class);
         Input mockInputConfig = mock(Input.class);
         Output mockOutputConfig = mock(Output.class);
@@ -50,6 +50,5 @@ public class ComputationCoordinatorPrototypeSmoke{
 
         // Verifications and assertions
         assertEquals(ComputeResult.SUCCESS, result, "ComputeResult should be SUCCESS");
-        return true;  
     }
 }

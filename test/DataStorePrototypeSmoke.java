@@ -35,33 +35,35 @@ class DataStorePrototypeSmoke {
     }
    
     @Test
-    WriteResult testAppendSingleResult_Success() throws IOException {
+    void testAppendSingleResult_Success() throws IOException {
         File tempFile = new File("Datastore_Success.txt");
         when(mockOutput.getOutput()).thenReturn(tempFile.getAbsolutePath());
         String resultData = "TestResult";
+        
         WriteResult result = dataStore.appendSingleResult(mockOutput, resultData);
+        
+        // Check if result is null to avoid potential NullPointerException
+        assertNotNull(result, "WriteResult should not be null");
+        
         try (BufferedReader reader = new BufferedReader(new FileReader(tempFile))) {
             String line = reader.readLine();
             assertNotNull(line);
             assertTrue(line.contains("TestResultresults"));
         }
         assertEquals(WriteResult.WriteResultStatus.SUCCESS, result.getStatus());
-        return result;
     }
 
-
     @Test
-    WriteResult testAppendSingleResult_NullCheck() {
+    void testAppendSingleResult_NullCheck() {
         assertNotNull(dataStore, "DataStore should not be null");
         File tempFile = new File("Datastore_NullCheck.txt");
         when(mockOutput.getOutput()).thenReturn(tempFile.getAbsolutePath());
         String resultData = "TestResult";
-        WriteResult result = null;
-        if(dataStore != null) {
-            result = dataStore.appendSingleResult(mockOutput, resultData);
-        }
+        
+        WriteResult result = dataStore.appendSingleResult(mockOutput, resultData);
+        
+        // Check for null result
         assertNotNull(result, "WriteResult should not be null if dataStore is initialized.");
         assertEquals(WriteResult.WriteResultStatus.SUCCESS, result.getStatus());
-        return result;
-   }
+    }
 }
